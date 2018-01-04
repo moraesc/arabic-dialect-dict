@@ -1,0 +1,524 @@
+#login_header {
+  font-family: Helvetica;
+  font-weight: bold;
+  position: absolute;
+  left: 571px;
+  top: 179px;
+  font-size: 36px;
+}
+
+.login_info {
+  font-family: Helvetica;
+  position: absolute;
+  top: 327px;
+  left: 529px;
+}
+
+#login_submit {
+  position: absolute;
+  top: 83px;
+  left: 73px;
+}
+
+#login_error {
+  font-family: Helvetica;
+  position: absolute;
+  top: 468px;
+  left: 485px;
+  color: red;
+}
+
+#title {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 38px;
+  position: relative;
+  left: 403px;
+  bottom: 326px;
+  color: white;
+}
+
+#register_header {
+  font-family: Helvetica;
+  font-weight: bold;
+  position: absolute;
+  font-size: 37px;
+  top: 176px;
+  left: 550px;
+}
+
+#banner {
+  background-color: #20008096;
+  height: 338px;
+  width: 100%;
+}
+
+#login {
+  font-family: Helvetica;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 21px;
+  left: 20px;
+}
+
+#register {
+  font-family: Helvetica;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 21px;
+  left: 95px;
+}
+
+#verification {
+  font-family: Helvetica;
+  color: white;
+  font-weight: bold;
+  position: absolute  ;
+  top: 21px;
+  left: 22px;
+}
+
+#logout {
+  position: absolute;
+  right: 22px;
+  top: 21px;
+  font-family: Helvetica;
+  font-weight: bold;
+  color: white;
+}
+
+#search {
+  height: 29px;
+  width: 367px;
+  position: relative;
+  bottom: 320px;
+  left: 415px;
+}
+
+#submit_button {
+  width: 55px;
+  height: 37px;
+  position: absolute;
+  left: 808px;
+  top: 155px;
+}
+
+#banner2 {
+  background-color: #20008096;
+  height: 100px;
+  width: 100%;
+}
+
+.searchResults {
+  font-family: Helvetica;
+  font-size: 33px;
+  position: absolute;
+  top: 7px;
+  left: 30px;
+  color: white;
+}
+
+#searchedWord {
+  position: relative;
+  top: -72px;
+  left: 184px;
+}
+
+#column1 {
+  font-weight: bold;
+  font-family: Helvetica;
+  font-size: 34px;
+  position: absolute;
+  left: 125px;
+  top: 214px;
+}
+
+#errorMessage {
+  font-family: Helvetica;
+  font-size: 18px;
+  position: absolute;
+  top: 50px;
+  left: 506px;
+}
+
+#translationHeader {
+  font-family: Helvetica;
+  font-weight: bold;
+  position: absolute;
+  top: 214px;
+  left: 449px;
+}
+
+.translationRadios {
+  font-family: Helvetica;
+  position: absolute;
+  top: 267px;
+  left: 427px;
+}
+
+#dialectHeader {
+  font-family: Helvetica;
+  font-weight: bold;
+  position: absolute;
+  top: 214px;
+  left: 707px;
+}
+
+.dialectRadios {
+  font-family: Helvetica;
+  position: absolute;
+  top: 267px;
+  left: 693px;
+}
+
+.column1_results {
+  font-family: Helvetica;
+  font-size: 17px;
+  position: absolute;
+  top: 341px;
+  left: 106px;
+}
+
+.secondDialectLabel {
+  font-family: Helvetica;
+  font-size: 34px;
+}
+
+#login_border {
+  width: 350px;
+  height: 350px;
+  border: 19px solid #20008096;
+  z-index: 0;
+  position: absolute;
+  top: 152px;
+  left: 445px;
+}
+
+#register_border {
+  width: 485px;
+  height: 467px;
+  border: 19px solid #20008096;
+  z-index: 0;
+  position: absolute;
+  top: 152px;
+  left: 370px;
+}
+
+.register_info {
+  font-family: Helvetica;
+  position: absolute;
+  top: 316px;
+  left: 521px;
+}
+
+.register_checkboxes {
+  font-family: Helvetica;
+  position: absolute;
+  top: 427px;
+  left: 420px;
+}
+
+.register_radios {
+  font-family: Helvetica;
+  position: absolute;
+  top: 428px;
+  right: 426px;
+  f
+}
+
+#select_dialect {
+  font-weight: bold;
+}
+
+#english_id {
+  font-weight: bold;
+}
+
+#submit_register {
+  position: absolute;
+  top: 554px;
+  right: 622px;
+}
+
+#register_error {
+  font-family: Helvetica;
+  top: 609px;
+  right: 519px;
+  color: red;
+  position: absolute;
+}
+
+#login_homepage, #reg_homepage {
+  font-family: Helvetica;
+}
+
+.column2 {
+  font-family: Helvetica;
+  position: absolute;
+  top: 335px;
+  left: 534px;
+  font-size: 17px;
+}
+
+.column2_button #column2 {
+  font-family: Helvetica;
+  font-size: 20px;
+  position: absolute;
+  top: 135px;
+  left: 32px;
+  color: #20008096;
+  background-color: transparent;
+}
+
+.column3_button #column3 {
+  font-family: Helvetica;
+  font-size: 20px;
+  position: absolute;
+  top: 176px;
+  left: 32px;
+  color: #20008096;
+  background-color: transparent;
+}
+
+.column2 #column2 {
+  font-size: 37px;
+  position: absolute;
+  font-weight: bold;
+  top: -123px;
+  left: 67px;
+}
+
+#search_homepage {
+  font-family: Helvetica;
+  position: absolute;
+  right: 25px;
+  top: 52px;
+  color: black;
+  z-index: 1;
+}
+
+.column3 #column3 {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 37px;
+  position: absolute;
+  top: 215px;
+  right: 111px;
+}
+
+.column3_results {
+  font-family: Helvetica;
+  font-size: 17px;
+  position: absolute;
+  top: 335px;
+  right: 30px;
+}
+
+#entry_banner {
+  background-color: #20008096;
+  height: 100px;
+  width: 100%;
+}
+
+#button_column3 {
+  position: absolute;
+}
+
+#entry_header {
+  font-family: Helvetica;
+  font-size: 37px;
+  position: absolute;
+  top: -1px;
+  left: 32px;
+  color: white;
+}
+
+.entry_form {
+  font-family: Helvetica;
+}
+
+.entry_fields {
+  font-weight: bold;
+  position: absolute;
+  top: 158px;
+  left: 39px;
+}
+
+#partOfSpeechHeader {
+  font-weight: bold;
+  position: absolute;
+  top: 117px;
+  left: 461px;
+}
+
+.partOfSpeechRadios {
+  position: absolute;
+  top: 158px;
+  left: 458px;
+}
+
+#create_dialect {
+  font-weight: bold;
+  position: absolute;
+  top: 117px;
+  left: 773px;
+}
+
+.create_dialect_radios {
+  position: relative;
+  top: 51px;
+  left: 748px;
+}
+
+#submit_entry {
+  position: relative;
+  left: 999px;
+  bottom: 49px;
+}
+
+#create_homepage {
+  color: black;
+  font-family: Helvetica;
+  position: absolute;
+  right: 35px;
+  top: 49px;
+}
+
+#create_entry_homepage {
+  font-family: Helvetica;
+  color: white;
+  position: absolute;
+  top: 21px;
+  left: 25px;
+  font-weight: bold;
+}
+
+#create_entry_search {
+  font-family: Helvetica;
+  font-size: 18px;
+  position: absolute;
+  right: 41px;
+  top: 137px;
+}
+
+#line {
+  height: 9px;
+  background-color: #20008096;
+  position: relative;
+  width: 1281px;
+  right: 106px;
+}
+
+#post_comment_Levantine {
+  font-family: Helvetica;
+  position: absolute;
+  top: 179px;
+  left: -5px;
+  font-size: 25px;
+}
+
+.comment_info_Levantine {
+  font-family: Helvetica;
+  position: absolute;
+  right: 35px;
+}
+
+.column1_comments {
+  font-family: Helvetica;
+  position: relative;
+  /*top: 146px;
+  left: 31px;*/
+}
+
+/*.column1_comments {
+  font-family: Helvetica;
+  position: relative;
+  top: 343px;
+  left: 31px;
+}*/
+
+.comment_info_egyptian {
+  font-family: Helvetica;
+  position: relative;
+  top: 283px;
+  left: 31px;
+}
+
+.comment_info_gulf {
+  font-family: Helvetica;
+  position: relative;
+  top: 283px;
+  left: 31px;
+}
+
+#commenter {
+  position: relative;
+  top: 457px;
+  left: 24px;
+}
+
+#Levantine_comment_field {
+  position: absolute;
+  height: 126px;
+  top: 62px;
+  right: -3px;
+  width: 254px;
+}
+
+#Egyptian_comment_field {
+  position: relative;
+  height: 154px;
+  left: 43px;
+  width: 291px;
+}
+
+#Gulf_comment_field {
+  position: relative;
+  height: 154px;
+  left: 43px;
+  width: 291px;
+}
+
+#submit_comment {
+  position: relative;
+  top: 301px;
+  left: 72px;
+}
+
+.column3_comments {
+  position: relative;
+  left: 767px;
+  top: 63px;
+}
+
+#error_message {
+  font-family: Helvetica;
+  color: red;
+  position: absolute;
+  font-size: 18px;
+  top: 342px;
+  left: 40px;
+}
+
+#content {
+  height: 110px;
+  width: 323px;
+  position: absolute;
+  top: 155px;
+  left: 28px;
+}
+
+#dialect {
+  position: absolute;
+  top: 286px;
+  left: 28px;
+}
+
+#back_search {
+  font-family: Helvetica;
+  position: absolute;
+  top: 124px;
+  left: 28px;
+}

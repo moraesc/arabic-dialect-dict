@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <a href="/dictionary/homepage" id="search_homepage">Back to Homepage</a>
+
+  <div id="banner2"></div>
+
+  <div class="searchResults">
+    <p>Results for:</p><span id="searchedWord">{{ word }}</span>
+  </div>
+
+  <!-- Show second dialect -->
+  <div class="column2_button">
+    <button id="column2" value="{{ secondDialect }}">See {{ secondDialect }} Definition</button>
+  </div>
+
+  <!-- Show third dialect -->
+  <div class="column3_button">
+    <button id="column3" value="{{ thirdDialect }}">See {{ thirdDialect }} Definition</button>
+  </div>
+
+  <input type='hidden' id='translation' value= "{{ translation }}">
+  <input type='hidden' id='dialect' value= "{{ dialect }}">
+  <input type='hidden' id='word' value="{{ word }}">
+
+  <input type='hidden' id='curData' data-translation="{{ translation }}" data-dialect="{{ dialect }}"
+  data-word="{{ word }}" data-message="{{message}}">
+
+  {% if comments %}
+    <input type='hidden' id="comments_exist" value=true>
+  {% else %}
+    <input type='hidden' id="comments_exist" value=false>
+  {% endif %}
+
+  {% for e in entries %}
+    <input type='hidden' id="{{forloop.counter}}" name='entry' data-arabeasy_word="{{ e.arabeasy_word }}" data-script_word="{{ e.script_word }}"
+    data-english_definition="{{ e.english_definition }}" data-part_of_speech = "{{ e.part_of_speech }}"
+    data-message="{{message}}">
+  {% endfor %}
+
+  {% for c in comments %}
+    <input type='hidden' id="{{forloop.counter}}" name='comment' data-author="{{ c.author }}"
+    data-content="{{ c.content }}" data-likes = "{{ c.likes }}"> </input>
+  {% endfor %}
+
+  <div id="{{ dialect }}" class="column1"></div>
+  <div id="{{ secondDialect }}" class="column2"></div>
+  <div id="{{ thirdDialect }}" class ="column3"></div>
+
+  <div id="{{ dialect }}_comments" class="column1_comments"></div>
+
+  <div id="{{ secondDialect }}_comments" class="column2_comments"></div>
+
+  <div id="{{ thirdDialect }}_comments" class ="column3_comments"></div>
+
+  <script>
+
+    //Declare some variables
+    var curData = document.getElementById('curData');
+    var entries = document.getElementsByName('entry');
+    var comments_exist = document.getElementById('comments_exist').value;
+    var comments = document.getElementsByName('comment');
+
+    //Do another search when user clicks on button to see word in different dialect
+    function search(event) {
+      var xmlHttp = new XMLHttpRequest();
+      var url = '/dictionary/getjson/' + curData.dataset.translation + '/' + event.target.value + '/' + curData.dataset.word;
+      console.log(url);
+      xmlHttp.open("GET", url, true);
+      xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xmlHttp.addEventListener("load", function(event){
+          var j = JSON.parse(event.target.response);
+          build_column(j.dialect)
+          if(j.message != "") {
+              add_entry(j.dialect, "", "", "", "");
+              add_message(j.dialect, j.message);
+          }
+          else {
+            //Show entries
+            for(k in j.entries) {
+              var e = j.entries[k];
+              add_entry(e.dialect, e.arabeasy_word, e.script_word, e.english_definition, e.part_of_speech);
+            }
+            //Show comments
+            for(k in j.comments) {
+              var c = j.comments[k];
+              add_comment(j.dialect, c.author, c.content, c.likes)
+            }
+            build_comment_column(j.dialect);
+          }
+      }, false);
+      xmlHttp.send();
+
+    }
+    document.getElementById("column2").addEventListener("click", search, false);
+    document.getElementById("column3").addEventListener("click", search, false);
+
+    //Build column
+    function build_column(dialect) {
+      var column = document.getElementById(dialect);
+      var column_num = column.className;
+      var html = "<p id=\""+column_num+"\"> " + dialect + ": </p><div class=\""+column_num+"_results\"></div> ";
+      column.innerHTML = html;
+    }
+
+    //Build column for comments
+    function build_comment_column(dialect) {
+      var column = document.getElementById(dialect);
+      var column_num = column.className;
+      var div = document.getElementsByClassName(column_num+"_results")[0];
+      var url = '/dictionary/search/' + curData.dataset.translation + '/' + dialect + '/' + curData.dataset.word;
+      var entries_url = '/dictionary/entries/' + curData.dataset.translation + '/' + dialect + '/' + curData.dataset.word
+
+      var html =
+      "<div id=\"button_"+column_num+"\">" +
+      "<form method=\"GET\" action=\""+entries_url+"\">" +
+        "<input type=\"hidden\" id=\"search_url\" name=\"search_url\" value=\""+url+"\"></input>" +
+        "<button name=\"submit\"> Post a Comment! </input>" +
+      "</form>" +
+      "</div>";
+
+      div.innerHTML += html;
+    }
+
+    //Add comment
+    function add_comment(dialect, author, content, likes) {
+
+      var column = document.getElementById(dialect);
+      var column_num = column.className;
+      var div = document.getElementsByClassName(column_num+"_results")[0];
+
+      var html =
+        "<div>" +
+        "<p>"+author+": "+content+"</p>" +
+        "</div>";
+      div.innerHTML += html;
+    }
+
+    //Add message
+    function add_message(dialect, message) {
+      var column = document.getElementById(dialect);
+      var column_num = column.className;
+      var div = document.getElementsByClassName(column_num+"_results")[0];
+
+      var html = "<strong>"+message+"</strong>";
+
+      div.innerHTML += html;
+    }
+
+    //Add entry
+    function add_entry(dialect, arabeasy_word, script_word, english_definition, part_of_speech) {
+      var column = document.getElementById(dialect);
+      var column_num = column.className;
+      var div = document.getElementsByClassName(column_num+"_results")[0];
+
+      var html =
+        "<strong>ArabEasy Word:</strong> " +
+          "<span>"+arabeasy_word+"</span><br><br> " +
+        "<strong>Arabic Script Word:</strong> " +
+          "<span> "+script_word+"</span><br><br> " +
+        "<strong>English Definition:</strong> " +
+          "<span> "+english_definition+"<span><br><br> " +
+        "<strong>Part of Speech:</strong> " +
+          "<span>"+part_of_speech+"</span> " +
+          "<p>---------------------------------------</p>";
+
+      div.innerHTML += html;
+    }
+
+    build_column(curData.dataset.dialect);
+
+    if(curData.dataset.message == "") {
+
+      for(var i=0; i<entries.length; i++) {
+        var cur = entries[i];
+        add_entry(curData.dataset.dialect, cur.dataset.arabeasy_word, cur.dataset.script_word,
+        cur.dataset.english_definition, cur.dataset.part_of_speech);
+      }
+
+      if(comments_exist) {
+        for(var j=0; j<comments.length; j++) {
+          var com = comments[j];
+          add_comment(curData.dataset.dialect, com.dataset.author, com.dataset.content, com.dataset.likes);
+        }
+      }
+      build_comment_column(curData.dataset.dialect);
+
+    }
+    else {
+      add_entry(curData.dataset.dialect, "", "", "", "");
+      add_message(curData.dataset.dialect, curData.dataset.message);
+    }
+
+  </script>
+
+</body>
+
+</html>

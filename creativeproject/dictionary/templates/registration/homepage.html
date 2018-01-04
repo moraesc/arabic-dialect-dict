@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<head>
+  <title>Arabic Dialect Dictionary</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <div id="banner"></div>
+
+  <div class="page-header">
+   <p id="title">Arabic Dialect Dictionary</p>
+     <input id="search" type="text" name="q" placeholder="Search...">
+
+     <!-- Translation Options -->
+     <p id="translationHeader">Translation:</p>
+     <div class="translationRadios">
+       <input type="radio" name="translation" value="enar" checked> English-Arabic<br>
+       <input type="radio" name="translation" value="aren"> Arabic-English<br>
+     </div>
+
+     <!-- Dialect Options -->
+     <p id="dialectHeader">Dialects:</p>
+     <div class="dialectRadios">
+       <input type="radio" name="dialect" value="Levantine" checked> Levantine<br>
+       <input type="radio" name="dialect" value="Egyptian"> Egyptian<br>
+       <input type="radio" name="dialect" value="Gulf"> Gulf<br>
+     </div>
+
+    <input id="submit_button" type="submit" value="Submit" name="Submit">
+
+   <script>
+    //Create URL
+    function setURL()
+    {
+      var url = '/dictionary/search/';
+
+      //get translation
+      var translations = document.getElementsByName('translation');
+      for(var j=0; j<translations.length; j++) {
+        if(translations[j].checked) {
+          url += translations[j].value + '/';
+        }
+      }
+
+     //get dialect
+      var dialects = document.getElementsByName('dialect');
+      for(var i=0; i<dialects.length; i++) {
+        if(dialects[i].checked) {
+          url += dialects[i].value + '/';
+        }
+      }
+
+      //get word
+      var word = document.getElementById('search').value;
+      url += word;
+
+      //add url to form action
+      console.log(url);
+      window.location = url;
+    }
+    document.getElementById('submit_button').addEventListener('click', setURL, false);
+    window.onload = function() { document.getElementById('search').value = '';}
+   </script>
+
+  </div>
+
+  <!-- Display all this if user is logged in -->
+  {% if request.user.is_authenticated %}
+    <!-- <a href="/dictionary/verify" id="verification">Apply for Verification</a> -->
+    <a href="/dictionary/logout/" id="logout">Logout</a>
+    <a href="/dictionary/create/" id="create_entry_homepage">Add an Entry</a>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            </div>
+        </div>
+    </div>
+  {% else %}
+    <a href="/dictionary/login/" id="login">Log In</a>
+    <a href="/dictionary/register/" id="register">Register</a>
+  {% endif %}
+
+</body>
+
+</head>

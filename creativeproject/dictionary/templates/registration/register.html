@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <a href="/dictionary/homepage" id="reg_homepage">Back to Homepage</a>
+
+  <div id="register_border"></div>
+
+  <!-- Register Form -->
+  <form id="register_form" action="/dictionary/register/" method="POST">
+    {% csrf_token %}
+    <p id="register_header">Register:</p>
+
+    <!-- Register Form FIelds -->
+    <div class="register_info">
+      <label for="new_username">Username: </label><input id="username" name="username" type="text"><br>
+      <br>
+      <label for="new_password">Password: </label><input id="password" name="password" type="password"><br>
+      <br>
+    </div>
+
+    <!-- Native Dialect Checkbox Options -->
+    <div class="register_checkboxes">
+      <p id="select_dialect">Select Native Dialect(s):</p>
+      <label for="levantine_speaker">Levantine Speaker: </label>
+        <input type="checkbox" name="dialect" value="Levantine"><br>
+      <label for="egyptian_speaker">Egyptian Speaker: </label>
+        <input type="checkbox" name="dialect" value="Egyptian"><br>
+      <label for="gulf_speaker">Gulf Speaker: </label>
+        <input type="checkbox" name="dialect" value="Gulf"><br>
+    </div>
+
+    <!-- English Native Speaker - Yes or No -->
+    <div class="register_radios">
+      <p id="english_id">Native English Speaker:</p>
+      <input type="radio" name="native" value="yes">Yes<br>
+      <input type="radio" name="native" value="no">No<br>
+    </div>
+
+    <input id="submit_register" type="submit" value="Submit" name="Submit_Register">
+
+  </form>
+
+  <!-- Display error message -->
+  <span id="register_error">{{ register_error }}</span>
+
+</body>
+
+</html>

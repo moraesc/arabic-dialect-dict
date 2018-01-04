@@ -1,0 +1,48 @@
+Background:
+
+The Arabic language features dialects with very significant differences in both grammar
+and vocabulary, some of which are mutually unintelligible. Unfortunately, most online
+resources only contain information on so called "Standard" Arabic (فصحى) and do not reflect
+the way that Arabs actually speak.
+
+For our project, we would like to bridge this gap by developing an online Arabic Dialect
+dictionary using Django. All users will be able to search for and comment on dictionary entries,
+and native speakers will be able to submit entries of their own. We believe that crowdsourcing
+vocabulary is the best way to capture these living dialects.
+
+Creative Project Rubric
+
+1.	Setting up Django (12 points)
+  •	Screenshot of django code demonstrating that proper django version is installed (2 points)
+  •	Use django admin to create project. Screenshot of resulting project file system (2 points)
+  •	Screenshot of django “runserver” command working (2 points)
+  •	Create an app called polls using the “startapp” command (2 points)
+  •	Write a view that displays “You are at the polls index” that runs on your local host (4 points)
+2.	Arabic Dialect Dictionary (68 points)
+  •	Dictionary View (5 points)
+    o	Users can view the same entry in multiple dialects on the same page (5 points)
+  •	User and Dictionary Management (30 points)
+    o	Users can log in and log out (2 points)
+    o	New users can register (3 points)
+    o	All users are able to search for terms in the dictionary (5 points)
+    o	Users can enter Arabic search entries in Arabic script or ArabEasy (5 points)
+    o	All search results include a formal definition and part of speech in Arabic script or ArabEasy depending on search query (5 points)
+    o	Users that are registered and are native speakers of 2 of the languages/dialects the website supports can create definitions (5 points)
+    o	All users with an account can comment on definition entries (5 points)
+  •	Django Features (8 points)
+    o	Use Django Database feature (2 points)
+    o	Use Django HTML template feature (2 points)
+    o	Use Django Views feature (2 points)
+    o	Use Django URLS feature (2 points)
+  •	Best Practices (20 points)
+    o	Code is well formatted and easy to read, with proper commenting (3 points)
+    o	Passwords are stored salted and encrypted (2 points)
+    o	Safe from SQL Injection attacks (2 points)
+    o	Safe from XSS attacks (3 points)
+    o	Session Cookie is HTTP-Only (3 points)
+    o	CSRF tokens are passed (5 points)
+    o	All pages pass the W3C validator (2 points)
+  •	Usability (5 points)
+    o	Site is intuitive to use and navigate (4 points)
+    o	Site is visually appealing (1 point)
+3.	Creative Portion (20 points)

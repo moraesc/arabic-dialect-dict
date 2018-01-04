@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<head>
+  <title>Create Entry</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  {% if message %}
+    <span id='error_message'>{{message}}</span>
+  {% endif %}
+  {% if not user.is_authenticated %}
+    <script> window.location = '/dictionary/homepage/'</script>
+  {% elif not perms.auth.speaks_gulf and not perms.auth.speaks_egyptian and not perms.auth.speaks_levantine %}
+    </p></p>You don't seem to speak any Arabic ya 7abibi.</p></p>
+  <a href="/dictionary/homepage" id="create_homepage">Back to Homepage</a>
+  {% else %}
+
+  <a href="/dictionary/homepage" id="create_homepage">Back to Homepage</a>
+
+  <div id="entry_banner"></div>
+
+  <p id="entry_header"><strong> Create an Entry! </strong></p>
+
+  <!-- Create Entry Form -->
+  <form id="create_entry" action="/dictionary/submit/" method="POST">
+    {% csrf_token %}
+
+    <!-- Form Field Entries -->
+    <input type='hidden' id='author' name='author' value="{{user.username}}"></input>
+    <div class="entry_form">
+    <div class="entry_fields">
+      <label for="script_word">Arabic Script Word: </label>
+        <input id="script_word" name="script_word" type='text'></input> </p>
+      <label for="arabeasy_word">Arabeasy Word: </label>
+        <input id="arabeasy_word" name="arabeasy_word" type='text'></input> </p>
+      <label for="english_definition">English Definition: </label>
+        <input id="english_definition" name="english_definition" type='text'></input>
+    </div>
+
+    <!-- Part of Speech Radio Options -->
+    <p id="partOfSpeechHeader">Part Of Speech:</p>
+    <div class="partOfSpeechRadios">
+      <input type="radio" name="part_of_speech" value="V" checked> Verb </input><br>
+      <input type="radio" name="part_of_speech" value="N"> Noun </input><br>
+      <input type="radio" name="part_of_speech" value="P"> Particle </input><br>
+      <input type="radio" name="part_of_speech" value="PN"> Pronoun </input><br>
+      <input type="radio" name="part_of_speech" value="ADJ"> Adjective </input><br>
+      <input type="radio" name="part_of_speech" value="ADV"> Adverb </input><br>
+      <input type="radio" name="part_of_speech" value="PRE"> Preposition </input><br>
+      <input type="radio" name="part_of_speech" value="I"> Interjection </input><br>
+    </div>
+
+    <!-- Native Dialect Options -->
+    <p id="create_dialect">Dialect:</p>
+    <div class="create_dialect_radios">
+      {% if perms.auth.speaks_levantine %}
+        <input type="radio" name="dialect" value="Levantine" checked> Levantine<br>
+      {% endif %}
+      {% if perms.auth.speaks_egyptian %}
+        <input type="radio" name="dialect" value="Egyptian"> Egyptian<br>
+      {% endif %}
+      {% if perms.auth.speaks_gulf %}
+        <input type="radio" name="dialect" value="Gulf"> Gulf<br>
+      {% endif %}
+    </div>
+
+    <p>
+      <input id="submit_entry" type="submit" value="Submit">
+    </p>
+  </form>
+
+{% endif %}
+
+</body>
+</html>

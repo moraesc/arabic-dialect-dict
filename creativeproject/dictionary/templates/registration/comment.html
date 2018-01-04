@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<head>
+  <title>Add Comment</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  {% if message %}
+    <span id='error_message'>{{message}}</span>
+  {% endif %}
+  {% if not user.is_authenticated or not search_url %}
+    <script> window.location = '/dictionary/homepage/'</script>
+  {% endif %}
+
+  <a href="/dictionary/homepage" id="create_homepage">Back to Homepage</a>
+  <a href={{search_url}} id="back_search"> Back to Search </a>
+
+  <div id="entry_banner"></div>
+
+  <p id="entry_header"><strong> Add a Comment! </strong></p>
+
+  <!-- Create Comment Form -->
+  <form id="create_entry" action="/dictionary/submit_comment/" method="POST">
+    {% csrf_token %}
+      <input type='hidden' id='pk' name='pk' value = "{{entry.id}}"></input>
+      <input type='hidden' id='author' name='author' value="{{user.username}}"></input>
+      <div class="comment_info">
+      <input type="text" name="content" id="content">
+      </div>
+      <input id="dialect" type="submit" value="Submit" name="Submit">
+  </form>
+
+  <!-- Javascript to Create Entry -->
+  <script>
+    var form = document.getElementById("create_entry");
+    document.getElementById("content").addEventListener("keyup", function(event) {
+      console.log();}, false)
+  </script>
+
+</body>
+
+</html>

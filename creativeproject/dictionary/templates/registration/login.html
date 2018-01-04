@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <a href="/dictionary/homepage" id="login_homepage">Back to Homepage</a>
+
+  <div id="login_border"></div>
+
+  <!-- Log in form -->
+  <form id="login_form" action="/dictionary/login/" method="POST">
+    {% csrf_token %}
+    <p id="login_header">Log In:</p>
+
+    <div class="login_info">
+      <label for="username">Username: </label><input id="username" name="username" type="text"><br>
+      <br>
+      <label for="password">Password: </label><input id="password" name="password" type="password"><br>
+      <br>
+      <input id="login_submit" type="submit" value="Submit" name="Submit">
+    </div>
+
+    <span id="login_error"> {{ login_error }}</span>
+
+  </form>
+
+</body>
+
+</html>
