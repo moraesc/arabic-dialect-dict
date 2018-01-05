@@ -1,16 +1,16 @@
-# Group Members: #
+Camilla Moraes
 
-Camilla Moraes - 444683
+CSE 330 - Rapid Prototype Development and Creative Programming
 
-Sam Sadat-Wexler - 429123
+# Background: #
+The Arabic language features dialects with very significant differences in both grammar
+and vocabulary, some of which are mutually unintelligible. Unfortunately, most online
+resources only contain information on so called "Standard" Arabic (فصحى) and do not reflect
+the way that Arabs actually speak.
 
-# Approval: #
+# About: #
+An Arabic Dialect Dictionary created using Django. Any user can search for Arabic to English or English to Arabic definitions and see results in Levantine, Gulf, or Egyptian. Only users with registered accounts can add entries, but they can only add entries for dialects of which they are native speakers. All users can comment on entries. Crowdsourcing
+vocabulary is the best way to capture these living dialects.
 
-Rubric approved by Julia and Alex
-
-# Note: #
-
-We completed the DjangoProject.com tutorial and referred to the Official Django documentation.
-
-Tutorial: https://docs.djangoproject.com/en/2.0/intro/
-Documentation: https://docs.djangoproject.com/en/2.0/
+# Collaborators: #
+Camilla Moraes
